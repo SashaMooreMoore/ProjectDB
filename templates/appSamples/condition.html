@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условие if/elif/else</title>
+</head>
+<body>
+    <a href="{% url 'urlHomePage' %}">Перейти назад</a>
+
+
+    {% if age > 25 %}
+        <p>Возраст больше 25, а именно - {{age}}</p>
+    {% else %}
+        <p>Возраст меньше 25, а именно - {{age}}</p>
+    {% endif %}
+
+
+    {% if status %}
+        <p>Статус хороший</p>
+    {% else %}
+        <p>Статус плохой</p>
+    {% endif %}
+
+
+    {% if message|length > 1 %}
+        <p>Длинна сообщения составляет - {{ message|length }} символов</p>
+    {% else %}
+        <p>Длинна сообщения меньше двух символов</p>
+    {% endif %}
+
+    {% comment %}
+    {% for item in list_block %}
+        {% if item == 12 %}
+            <p>
+                В списке есть такое число
+            </p>
+        {% else %}
+            <p>
+                В списке нет такого числа
+            </p>
+        {% endif %}
+    {% endfor %}
+    {% endcomment %}
+
+
+    {% for item in list_block %}
+        {% if forloop.first %}
+            <p> Четные числа в списке: 
+        {% endif %}
+        {% if item|divisibleby:"2" %}
+            {{ item }}
+        {% endif %}
+        {% if forloop.last %}
+            </p>
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>
